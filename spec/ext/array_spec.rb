@@ -10,4 +10,9 @@ describe Array do
   it "should depend on the first element to determine dimensions" do
     [1, [1,2]].dimensions.should eql(1)
   end
+  
+  it "should shuffle" do
+    a = [1,2,3,4,5,6,7,8,9,0]
+    a.shuffle.should_not == a
+  end
 end

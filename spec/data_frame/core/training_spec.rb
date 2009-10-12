@@ -5,6 +5,20 @@ describe "Training" do
     @df = DataFrame.new(:one)
     @df.import((0...100).to_a)
   end
+  
+  describe "Training, Testing and Validation" do
+    
+    it "should give back an array containing 3 array" do
+      @df.training_and_validation.size.should == 3
+    end
+    
+    it "should be 50:25:25" do
+      @df.training_and_validation[0].size.should == 50
+      @df.training_and_validation[1].size.should == 25
+      @df.training_and_validation[2].size.should == 25
+    end
+        
+  end
 
   it "should be able to create a proportional training set from a data frame" do
     @df.training_set(:n => 3)

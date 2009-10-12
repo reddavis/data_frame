@@ -8,4 +8,8 @@ class Array
     n += 1
     self.first.is_a?(Array) ? self.first.dimensions(n) : n
   end
+  
+  def shuffle
+    self.sort {rand}
+  end
 end

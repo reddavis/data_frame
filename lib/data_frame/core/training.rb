@@ -1,5 +1,26 @@
 module Training #:nodoc:
   
+  def training_and_validation
+    return @ttv if @ttv
+    
+    training, testing, validation = [], [], []
+    data = self.items.clone.shuffle
+    
+    until data.empty?
+      4.times do |n|
+        if n == 2
+          testing << data.pop
+        elsif n == 3
+          validation << data.pop
+        else
+          training << data.pop
+        end
+      end
+    end
+    
+    @ttv = [training, testing, validation]
+  end
+  
   # Remove the training set if reset
   # Return cached training_set, if there is one
   # Get the proportion or 80%
